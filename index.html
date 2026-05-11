@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smoky Progressivo</title>
+    <title>Efeito Smoky</title>
     <style>
+        /* Configurações básicas do fundo */
         body {
             margin: 0;
             padding: 0;
-            background-color: #000;
+            background-color: #000; /* Fundo preto */
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             overflow: hidden;
-            font-family: 'Arial Black', sans-serif;
-            user-select: none;
+            font-family: 'Arial', sans-serif;
         }
 
         ul {
@@ -30,21 +30,23 @@
             font-size: 5em;
             font-weight: bold;
             letter-spacing: 10px;
-            transition: 0.8s ease-out; /* Transição mais rápida para parecer fumaça real */
-            display: inline-block;
+            transition: 2s; /* Duração do efeito de fumaça */
         }
 
-        /* A MÁGICA ESTÁ AQUI:
-           1. li:hover -> A letra que o mouse está em cima.
-           2. li:has(~ li:hover) -> Todas as letras que vêm ANTES da que o mouse está em cima.
-        */
-        ul li:hover,
-        ul li:has(~ li:hover) {
-            transform: translateY(-80px) scale(1.5);
+        /* O truque do "Sumir aos poucos":
+           Ao passar o mouse no container (ul), cada letra (li) reage. */
+        ul:hover li {
+            transform: translateY(-200px) translateX(200px) rotate(45deg) scale(2);
             opacity: 0;
-            filter: blur(30px);
-            pointer-events: none; /* Evita que a letra "invisível" bloqueie o mouse */
+            filter: blur(20px);
         }
+
+        /* Atraso (delay) individual para cada letra sumir uma por vez */
+        ul li:nth-child(1) { transition-delay: 0s; }
+        ul li:nth-child(2) { transition-delay: 0.1s; }
+        ul li:nth-child(3) { transition-delay: 0.2s; }
+        ul li:nth-child(4) { transition-delay: 0.3s; }
+        ul li:nth-child(5) { transition-delay: 0.4s; }
 
     </style>
 </head>
