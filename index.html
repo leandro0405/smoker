@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efeito Smoky</title>
+    <style>
+        /* Configurações básicas do fundo */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Fundo preto */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        ul li {
+            list-style: none;
+            color: #fff;
+            font-size: 5em;
+            font-weight: bold;
+            letter-spacing: 10px;
+            transition: 2s; /* Duração do efeito de fumaça */
+        }
+
+        /* O truque do "Sumir aos poucos":
+           Ao passar o mouse no container (ul), cada letra (li) reage. */
+        ul:hover li {
+            transform: translateY(-200px) translateX(200px) rotate(45deg) scale(2);
+            opacity: 0;
+            filter: blur(20px);
+        }
+
+        /* Atraso (delay) individual para cada letra sumir uma por vez */
+        ul li:nth-child(1) { transition-delay: 0s; }
+        ul li:nth-child(2) { transition-delay: 0.1s; }
+        ul li:nth-child(3) { transition-delay: 0.2s; }
+        ul li:nth-child(4) { transition-delay: 0.3s; }
+        ul li:nth-child(5) { transition-delay: 0.4s; }
+
+    </style>
+</head>
+<body>
+
+    <ul>
+        <li>S</li>
+        <li>M</li>
+        <li>O</li>
+        <li>K</li>
+        <li>Y</li>
+    </ul>
+
+</body>
+</html>
