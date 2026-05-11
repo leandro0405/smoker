@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Efeito Smoky Premium</title>
+    <title>Efeito Smoky Equilibrado</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
     
     <style>
@@ -16,8 +16,8 @@
             align-items: center;
             height: 100vh;
             overflow: hidden;
-            /* Aplicando a fonte elegante e itálica */
             font-family: 'Playfair Display', serif;
+            user-select: none;
         }
 
         ul {
@@ -29,37 +29,39 @@
         ul li {
             list-style: none;
             color: #fff;
-            font-size: 10em; /* Fonte bem maior */
-            font-style: italic; /* Texto em itálico */
+            font-size: 10em;
+            font-style: italic;
             font-weight: 700;
             letter-spacing: 20px;
-            /* Aumentei para 3 segundos para o efeito ser bem lento */
-            transition: all 3s ease-in-out; 
+            /* TEMPO DE VOLTA: 1.5s para as letras reaparecerem suavemente */
+            transition: all 1.5s ease-in-out; 
             filter: blur(0);
             opacity: 1;
         }
 
-        /* Efeito de fumaça ao passar o mouse */
+        /* Efeito quando o mouse está em cima */
         ul:hover li {
-            transform: translateY(-150px) rotate(15deg) scale(1.8);
+            transform: translateY(-120px) rotate(10deg) scale(1.5);
             opacity: 0;
-            filter: blur(60px); /* Blur bem alto para fumaça densa */
+            filter: blur(50px);
+            /* TEMPO DE SUMIÇO: 1.8s (Mais rápido que os 3s anteriores, mas ainda etéreo) */
+            transition: all 1.8s ease-in-out;
         }
 
-        /* Delays maiores (0.4s) para garantir que sumam "uma por uma" bem devagar */
+        /* Delays de 0.2s: Ideal para ver uma por uma sem ser cansativo */
         ul li:nth-child(1) { transition-delay: 0s; }
-        ul li:nth-child(2) { transition-delay: 0.4s; }
-        ul li:nth-child(3) { transition-delay: 0.8s; }
-        ul li:nth-child(4) { transition-delay: 1.2s; }
-        ul li:nth-child(5) { transition-delay: 1.6s; }
+        ul li:nth-child(2) { transition-delay: 0.2s; }
+        ul li:nth-child(3) { transition-delay: 0.4s; }
+        ul li:nth-child(4) { transition-delay: 0.6s; }
+        ul li:nth-child(5) { transition-delay: 0.8s; }
 
-        /* Quando tira o mouse, elas voltam mais rápido (1s) para não cansar o usuário */
-        ul:not(:hover) li {
-            transition: all 1s ease-in-out;
-            transition-delay: 0s;
-        }
+        /* Faz com que a volta também tenha um pequeno delay sequencial para ser elegante */
+        ul:not(:hover) li:nth-child(1) { transition-delay: 0.4s; }
+        ul:not(:hover) li:nth-child(2) { transition-delay: 0.3s; }
+        ul:not(:hover) li:nth-child(3) { transition-delay: 0.2s; }
+        ul:not(:hover) li:nth-child(4) { transition-delay: 0.1s; }
+        ul:not(:hover) li:nth-child(5) { transition-delay: 0s; }
 
-        /* Ajuste para telas menores */
         @media (max-width: 768px) {
             ul li { font-size: 5em; letter-spacing: 10px; }
         }
