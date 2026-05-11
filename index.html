@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Efeito Smoky Refinado</title>
+    <title>Efeito Smoky Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+    
     <style>
         body {
             margin: 0;
@@ -14,7 +16,8 @@
             align-items: center;
             height: 100vh;
             overflow: hidden;
-            font-family: 'Arial Black', sans-serif;
+            /* Aplicando a fonte elegante e itálica */
+            font-family: 'Playfair Display', serif;
         }
 
         ul {
@@ -26,32 +29,39 @@
         ul li {
             list-style: none;
             color: #fff;
-            font-size: 5em;
-            font-weight: bold;
-            letter-spacing: 10px;
-            /* Tempo de 1s para sumir/voltar (mais ágil que os 2s anteriores) */
-            transition: all 1s ease-out; 
+            font-size: 10em; /* Fonte bem maior */
+            font-style: italic; /* Texto em itálico */
+            font-weight: 700;
+            letter-spacing: 20px;
+            /* Aumentei para 3 segundos para o efeito ser bem lento */
+            transition: all 3s ease-in-out; 
             filter: blur(0);
+            opacity: 1;
         }
 
-        /* Efeito ao passar o mouse no container */
+        /* Efeito de fumaça ao passar o mouse */
         ul:hover li {
-            /* Movimento mais fluido: sobe, inclina e gira */
-            transform: translateY(-120px) translateX(40px) rotate(20deg) skewX(20deg) scale(1.5);
+            transform: translateY(-150px) rotate(15deg) scale(1.8);
             opacity: 0;
-            filter: blur(40px); /* Blur aumentado para parecer fumaça fina */
+            filter: blur(60px); /* Blur bem alto para fumaça densa */
         }
 
-        /* Delays mais curtos (0.05s de diferença) para um rastro mais contínuo */
+        /* Delays maiores (0.4s) para garantir que sumam "uma por uma" bem devagar */
         ul li:nth-child(1) { transition-delay: 0s; }
-        ul li:nth-child(2) { transition-delay: 0.05s; }
-        ul li:nth-child(3) { transition-delay: 0.1s; }
-        ul li:nth-child(4) { transition-delay: 0.15s; }
-        ul li:nth-child(5) { transition-delay: 0.2s; }
+        ul li:nth-child(2) { transition-delay: 0.4s; }
+        ul li:nth-child(3) { transition-delay: 0.8s; }
+        ul li:nth-child(4) { transition-delay: 1.2s; }
+        ul li:nth-child(5) { transition-delay: 1.6s; }
 
-        /* Faz com que elas voltem na ordem inversa ou sem delay ao tirar o mouse */
+        /* Quando tira o mouse, elas voltam mais rápido (1s) para não cansar o usuário */
         ul:not(:hover) li {
+            transition: all 1s ease-in-out;
             transition-delay: 0s;
+        }
+
+        /* Ajuste para telas menores */
+        @media (max-width: 768px) {
+            ul li { font-size: 5em; letter-spacing: 10px; }
         }
     </style>
 </head>
