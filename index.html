@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Efeito Smoky Individual</title>
+    <title>Smoky Progressivo</title>
     <style>
         body {
             margin: 0;
@@ -14,9 +14,8 @@
             align-items: center;
             height: 100vh;
             overflow: hidden;
-            font-family: 'Arial', sans-serif;
-            /* Impede que o usuário selecione o texto acidentalmente */
-            user-select: none; 
+            font-family: 'Arial Black', sans-serif;
+            user-select: none;
         }
 
         ul {
@@ -31,16 +30,20 @@
             font-size: 5em;
             font-weight: bold;
             letter-spacing: 10px;
-            cursor: default;
-            /* A transição suave para a fumaça */
-            transition: transform 2s, opacity 2s, filter 2s;
+            transition: 0.8s ease-out; /* Transição mais rápida para parecer fumaça real */
+            display: inline-block;
         }
 
-        /* O SEGREDO: O efeito agora é aplicado diretamente no li:hover */
-        ul li:hover {
-            transform: translateY(-150px) translateX(100px) rotate(30deg) scale(2);
+        /* A MÁGICA ESTÁ AQUI:
+           1. li:hover -> A letra que o mouse está em cima.
+           2. li:has(~ li:hover) -> Todas as letras que vêm ANTES da que o mouse está em cima.
+        */
+        ul li:hover,
+        ul li:has(~ li:hover) {
+            transform: translateY(-80px) scale(1.5);
             opacity: 0;
-            filter: blur(25px);
+            filter: blur(30px);
+            pointer-events: none; /* Evita que a letra "invisível" bloqueie o mouse */
         }
 
     </style>
