@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Efeito Smoky</title>
+    <title>Efeito Smoky Refinado</title>
     <style>
-        /* Configurações básicas do fundo */
         body {
             margin: 0;
             padding: 0;
-            background-color: #000; /* Fundo preto */
+            background-color: #000;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             overflow: hidden;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Arial Black', sans-serif;
         }
 
         ul {
@@ -30,24 +29,30 @@
             font-size: 5em;
             font-weight: bold;
             letter-spacing: 10px;
-            transition: 2s; /* Duração do efeito de fumaça */
+            /* Tempo de 1s para sumir/voltar (mais ágil que os 2s anteriores) */
+            transition: all 1s ease-out; 
+            filter: blur(0);
         }
 
-        /* O truque do "Sumir aos poucos":
-           Ao passar o mouse no container (ul), cada letra (li) reage. */
+        /* Efeito ao passar o mouse no container */
         ul:hover li {
-            transform: translateY(-200px) translateX(200px) rotate(45deg) scale(2);
+            /* Movimento mais fluido: sobe, inclina e gira */
+            transform: translateY(-120px) translateX(40px) rotate(20deg) skewX(20deg) scale(1.5);
             opacity: 0;
-            filter: blur(20px);
+            filter: blur(40px); /* Blur aumentado para parecer fumaça fina */
         }
 
-        /* Atraso (delay) individual para cada letra sumir uma por vez */
+        /* Delays mais curtos (0.05s de diferença) para um rastro mais contínuo */
         ul li:nth-child(1) { transition-delay: 0s; }
-        ul li:nth-child(2) { transition-delay: 0.1s; }
-        ul li:nth-child(3) { transition-delay: 0.2s; }
-        ul li:nth-child(4) { transition-delay: 0.3s; }
-        ul li:nth-child(5) { transition-delay: 0.4s; }
+        ul li:nth-child(2) { transition-delay: 0.05s; }
+        ul li:nth-child(3) { transition-delay: 0.1s; }
+        ul li:nth-child(4) { transition-delay: 0.15s; }
+        ul li:nth-child(5) { transition-delay: 0.2s; }
 
+        /* Faz com que elas voltem na ordem inversa ou sem delay ao tirar o mouse */
+        ul:not(:hover) li {
+            transition-delay: 0s;
+        }
     </style>
 </head>
 <body>
