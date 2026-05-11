@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smoky Gothic Effect</title>
-    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
-    
+    <title>Efeito Smoky</title>
     <style>
+        /* Configurações básicas do fundo */
         body {
             margin: 0;
             padding: 0;
-            background-color: #000;
+            background-color: #000; /* Fundo preto */
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             overflow: hidden;
-            font-family: 'UnifrakturMaguntia', cursive;
-            user-select: none;
+            font-family: 'Arial', sans-serif;
         }
 
         ul {
@@ -29,53 +27,37 @@
         ul li {
             list-style: none;
             color: #fff;
-            font-size: 12em; /* Aumentado para destacar os detalhes da fonte gótica */
-            font-weight: 400;
-            letter-spacing: 15px;
-            /* Tempo de VOLTA (mais suave) */
-            transition: all 1.5s ease-in-out; 
-            filter: blur(0);
-            opacity: 1;
+            font-size: 5em;
+            font-weight: bold;
+            letter-spacing: 10px;
+            transition: 2s; /* Duração do efeito de fumaça */
         }
 
-        /* Efeito de fumaça ao passar o mouse */
+        /* O truque do "Sumir aos poucos":
+           Ao passar o mouse no container (ul), cada letra (li) reage. */
         ul:hover li {
-            /* Sobe e inclina levemente */
-            transform: translateY(-130px) rotate(-5deg) scale(1.4);
+            transform: translateY(-200px) translateX(200px) rotate(45deg) scale(2);
             opacity: 0;
-            filter: blur(55px);
-            /* Tempo de SUMIÇO (considerável) */
-            transition: all 1.8s ease-in-out;
+            filter: blur(20px);
         }
 
-        /* Delays sequenciais para sumir uma por uma */
+        /* Atraso (delay) individual para cada letra sumir uma por vez */
         ul li:nth-child(1) { transition-delay: 0s; }
-        ul li:nth-child(2) { transition-delay: 0.2s; }
-        ul li:nth-child(3) { transition-delay: 0.4s; }
-        ul li:nth-child(4) { transition-delay: 0.6s; }
-        ul li:nth-child(5) { transition-delay: 0.8s; }
+        ul li:nth-child(2) { transition-delay: 0.1s; }
+        ul li:nth-child(3) { transition-delay: 0.2s; }
+        ul li:nth-child(4) { transition-delay: 0.3s; }
+        ul li:nth-child(5) { transition-delay: 0.4s; }
 
-        /* Delays para voltar de forma organizada ao tirar o mouse */
-        ul:not(:hover) li:nth-child(1) { transition-delay: 0.4s; }
-        ul:not(:hover) li:nth-child(2) { transition-delay: 0.3s; }
-        ul:not(:hover) li:nth-child(3) { transition-delay: 0.2s; }
-        ul:not(:hover) li:nth-child(4) { transition-delay: 0.1s; }
-        ul:not(:hover) li:nth-child(5) { transition-delay: 0s; }
-
-        /* Ajuste para telas pequenas */
-        @media (max-width: 768px) {
-            ul li { font-size: 5em; letter-spacing: 5px; }
-        }
     </style>
 </head>
 <body>
 
     <ul>
         <li>S</li>
-        <li>m</li>
-        <li>o</li>
-        <li>k</li>
-        <li>y</li>
+        <li>M</li>
+        <li>O</li>
+        <li>K</li>
+        <li>Y</li>
     </ul>
 
 </body>
